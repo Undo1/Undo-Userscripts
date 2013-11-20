@@ -48,7 +48,7 @@ $('document').ready(function(){
     		var ids = $(obj).parent();
     		console.log(ids.attr("id").replace(/comment-/g, ""));
     		setTimeout(function(){$.post('/flags/comments/'+ids.attr("id").replace(/comment-/g, "")+'/add/22',{'otherText':'',
-		'fkey':StackExchange.options.user.fkey});}, 5000 * i);
+		'fkey':StackExchange.options.user.fkey}); console.log("comment flagged")}, 5000 * i);
 		});
 
 		$(".autoflag_checkbox").remove();
