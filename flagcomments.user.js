@@ -47,8 +47,7 @@ $('document').ready(function(){
 		function flagnext(){
 			console.log(flaggedcomments);
 			var obj=flaggedcomments.pop();
-			//var ids = $(obj).parent();
-			//console.log(ids.attr("id").replace(/comment-/g, ""));
+
 			$.post('/flags/comments/'+obj+'/add/22',
 				{'otherText':'','fkey':StackExchange.options.user.fkey},
 				function(){
@@ -61,13 +60,7 @@ $('document').ready(function(){
 			
 		}
 		flagnext();
-/*		$('.autoflag_checkbox:checked').each(function(i, obj) {
-    		var ids = $(obj).parent();
-    		console.log(ids.attr("id").replace(/comment-/g, ""));
-    		setTimeout(function(){$.post('/flags/comments/'+ids.attr("id").replace(/comment-/g, "")+'/add/22',{'otherText':'',
-		'fkey':StackExchange.options.user.fkey}); console.log("comment flagged")}, 5000 * i);
-		});
-*/
+
 		$(".autoflag_checkbox").remove();
 		// $(this).html("<strong>0/" + checked.length + "...</strong>");
 
