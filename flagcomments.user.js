@@ -26,8 +26,8 @@ $('document').ready(function(){
         return;
     }
     var isShowingCheckboxes = false;
-$('.post-menu').append($('<span class="lsep">|</span><a class="purge" href="javascript:void(0)" title="Flag obsolete comments">autoflag</a>'));
-$('.purge').bind("click",function(){
+	$('.post-menu').append($('<span class="lsep">|</span><a class="purge" href="javascript:void(0)" title="Flag obsolete comments">autoflag</a>'));
+	$('.purge').bind("click",function(){
 
 	// var postid=$(this).closest('div.question,div[id^=answer]').data('questionid')||$(this).closest('div.question,div[id^=answer]').data('answerid');
 	// $.post('/flags/posts/'+postid+'/add/PostOther',{'otherText':'obsolete comments',
@@ -43,10 +43,20 @@ $('.purge').bind("click",function(){
 	{
 		var checked = $('input:checked');
 		console.log(checked.length);
+
+		$('.autoflag_checkbox:checked').each(function(i, obj) {
+    		var ids = $(obj).parent();
+    		console.log(ids.attr("id").replace(/comment-/g, ""));
+    		setTimeout(function(){$.post('/flags/comments/'+ids.attr("id").replace(/comment-/g, "")+'/add/22',{'otherText':'',
+		'fkey':StackExchange.options.user.fkey});}, 5000 * i);
+		});
+
 		$(".autoflag_checkbox").remove();
-		$(this).html("<strong>0/" + checked.length + "...</strong>");
-		$.delay(1000);
-		$(this).html("<strong>1/" + checked.length + "...</strong>");
+		// $(this).html("<strong>0/" + checked.length + "...</strong>");
+
+		// var postid=$(this).closest('tr .comment');
+		// $.delay(1000);
+		// $(this).html("<strong>1/" + checked.length + "...</strong>");
 	}
 	isShowingCheckboxes = !isShowingCheckboxes;
 	return false;
