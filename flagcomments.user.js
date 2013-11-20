@@ -41,6 +41,7 @@ $('document').ready(function(){
 	}
 	else
 	{
+		$(this).html("<strong>working...</strong>");
 		var checked = $('input:checked');
 		console.log(checked.length);
 		var flaggedcomments=$('.autoflag_checkbox:checked').map(function(){return $(this).parent().attr('id').replace(/comment-/g, "")}).toArray()
@@ -52,8 +53,13 @@ $('document').ready(function(){
 				{'otherText':'','fkey':StackExchange.options.user.fkey},
 				function(){
 					console.log("response recieved");
+					$(".purge").html("toflag:" + flaggedcomments.length);
 					if(flaggedcomments.length>0){
 						setTimeout(flagnext,5010);
+					}
+					else
+					{
+						$(".purge").html("done");
 					}
 				}
 			);
@@ -62,6 +68,7 @@ $('document').ready(function(){
 		flagnext();
 
 		$(".autoflag_checkbox").remove();
+
 		// $(this).html("<strong>0/" + checked.length + "...</strong>");
 
 		// var postid=$(this).closest('tr .comment');
