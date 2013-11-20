@@ -43,14 +43,31 @@ $('document').ready(function(){
 	{
 		var checked = $('input:checked');
 		console.log(checked.length);
-
-		$('.autoflag_checkbox:checked').each(function(i, obj) {
+		var flaggedcomments=$('.autoflag_checkbox:checked').map(function(){return $(this).parent().attr('id').replace(/comment-/g, "")}).toArray()
+		function flagnext(){
+			console.log(flaggedcomments);
+			var obj=flaggedcomments.pop();
+			//var ids = $(obj).parent();
+			//console.log(ids.attr("id").replace(/comment-/g, ""));
+			$.post('/flags/comments/'+obj+'/add/22',
+				{'otherText':'','fkey':StackExchange.options.user.fkey},
+				function(){
+					console.log("response recieved");
+					if(flaggedcomments.length>0){
+						setTimeout(flagnext,5010);
+					}
+				}
+			);
+			
+		}
+		flagnext();
+/*		$('.autoflag_checkbox:checked').each(function(i, obj) {
     		var ids = $(obj).parent();
     		console.log(ids.attr("id").replace(/comment-/g, ""));
     		setTimeout(function(){$.post('/flags/comments/'+ids.attr("id").replace(/comment-/g, "")+'/add/22',{'otherText':'',
 		'fkey':StackExchange.options.user.fkey}); console.log("comment flagged")}, 5000 * i);
 		});
-
+*/
 		$(".autoflag_checkbox").remove();
 		// $(this).html("<strong>0/" + checked.length + "...</strong>");
 
