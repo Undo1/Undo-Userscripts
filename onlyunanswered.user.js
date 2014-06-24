@@ -4,11 +4,10 @@
 // @author Undo
 // @description Show only unanswered questions on the home page
 // @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html) 
-// @include http://*stackoverflow.com/*
-// @include http://*superuser.com/*
-// @include http://*serverfault.com/*
-// @include http://*stackexchange.com/*
-// @include http://discuss.area51.com/*
+// @include http://*stackoverflow.com/
+// @include http://*superuser.com/
+// @include http://*serverfault.com/
+// @include http://*stackexchange.com/
 // ==/UserScript==
 
 function with_jquery(f) {
