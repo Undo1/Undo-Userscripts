@@ -32,7 +32,7 @@ with_jquery(function($){
 					console.log(data);
 					if (data.Success == true)
 					{
-						if (data.Count == 5)
+						if (data.Count == undefined)
 						{
 							location.reload()
 						}
