@@ -23,6 +23,7 @@ with_jquery(function($){
 	    // }
 		$('div.stats span.vote-count-post').after($('<a class="naafromsearch" href="javascript:void(0)" title="Flag as NAA">NAA</a>'));
 		$('.naafromsearch').bind("click",function(){
+			var thing = $(this)
 			var postidtext=$(this).closest('div.search-result').attr('id').replace('answer-id-','')
 			console.log(postidtext)
 			$(this).html("<strong>working...</strong>");
@@ -32,11 +33,11 @@ with_jquery(function($){
 					console.log(data);
 					if (data.Success == true)
 					{
-						$(".naafromsearch").html("success");
+						thing.html("success");
 					}
 					else
 					{
-						$('.naafromsearch').html("uh-oh");
+						thing.html("uh-oh");
 					}
 				}
 			);
