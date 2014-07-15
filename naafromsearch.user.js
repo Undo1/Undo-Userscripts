@@ -17,30 +17,35 @@ function with_jquery(f) {
 
 with_jquery(function($){
 	$('document').ready(function(){
+
+		var postids = []
+
 	    // var htm=$('.post-menu').html()||"";
 	    // if(htm!=-1&&$('[id^=close-question] span').length!=0){
 	    //     return;
 	    // }
+
+	    window.setInterval(function(){
+	    	var postid = postids.pop()
+	    	if (postid != undefined)
+	    	{
+	    		console.log("flagging " + postid)
+				$(this).html("<strong>working...</strong>");
+				$.post('/flags/posts/'+postid+'/add/AnswerNotAnAnswer',
+					{'otherText':'','fkey':StackExchange.options.user.fkey},
+					function(data){
+						console.log(data);
+					}
+				);
+	    	}
+		}, 7000);
+
 		$('div.stats span.vote-count-post').after($('<a class="naafromsearch" href="javascript:void(0)" title="Flag as NAA">NAA</a>'));
 		$('.naafromsearch').bind("click",function(){
 			var thing = $(this)
 			var postidtext=$(this).closest('div.search-result').attr('id').replace('answer-id-','')
-			console.log(postidtext)
-			$(this).html("<strong>working...</strong>");
-			$.post('/flags/posts/'+postidtext+'/add/AnswerNotAnAnswer',
-				{'otherText':'','fkey':StackExchange.options.user.fkey},
-				function(data){
-					console.log(data);
-					if (data.Success == true)
-					{
-						thing.html("success");
-					}
-					else
-					{
-						thing.html("uh-oh");
-					}
-				}
-			);
+			postids.push(postidtext)
+			thing.html("added to list")
 		});
 		return false;
 	});
