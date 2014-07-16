@@ -29,11 +29,11 @@
 		</dict>
 		<key>Whitelist</key>
 		<array>
-			<string>*://stackoverflow.com/*</string>
+			<string>*://stackoverflow.com/search*</string>
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Flag from search</string>
+	<string>flag as NAA from /search</string>
 	<key>DeveloperIdentifier</key>
 	<string>VRGDQ857JW</string>
 	<key>ExtensionInfoDictionaryVersion</key>
