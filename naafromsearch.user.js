@@ -20,11 +20,6 @@ with_jquery(function($){
 
 		var postids = []
 
-	    // var htm=$('.post-menu').html()||"";
-	    // if(htm!=-1&&$('[id^=close-question] span').length!=0){
-	    //     return;
-	    // }
-
 	    window.setInterval(function(){
 	    	var postid = postids.pop()
 	    	if (postid != undefined)
@@ -37,6 +32,7 @@ with_jquery(function($){
 						console.log(data);
 					}
 				);
+				console.log(postids.length + " posts left")
 	    	}
 		}, 7000);
 
