@@ -4,7 +4,7 @@
 // @author Undo
 // @description To delete stuff faster
 // @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
-// @include http://stackoverflow.com/admin/users/*/post-comments
+// @include http://*stackoverflow.com/admin/users/*/post-comments
 // @include http://*superuser.com/admin/users/*/post-comments
 // @include http://*serverfault.com/admin/users/*/post-comments
 // @include http://*stackexchange.com/admin/users/*/post-comments
