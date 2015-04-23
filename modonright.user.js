@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name Comment purge
+// @name Mod button on right
 // @version 1.0
 // @author Undo
 // @description Move the mod button to the right of all the other buttons
