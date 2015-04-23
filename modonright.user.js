@@ -21,7 +21,7 @@ function with_jquery(f) {
 
 with_jquery(function($){
   $('document').ready(function(){
-    // Move the thing:
-    $(".post-menu").append($(".post-moderator-link"))
+    // Some voodoo magic from someone. I have no idea what this does.
+    $('[id*="t-m"]').map(function(i,e){$(e).parent().append(e)})
   });
 });
