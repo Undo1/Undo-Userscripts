@@ -21,7 +21,7 @@ function with_jquery(f) {
 
 with_jquery(function($){
   $('document').ready(function(){
-    $("div.system-alert:contains('information on this page might be private')").remove()
-	  return false;
+    $("div.system-alert:contains('information on this page might be private')").remove();
+    return false;
   });
 });
