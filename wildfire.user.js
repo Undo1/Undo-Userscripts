@@ -45,7 +45,7 @@ with_jquery(function($){
         
         console.log(flaggedcomments);
 
-        $.ajax({ url: "http://localhost:3000/flags/userscript-new",
+        $.ajax({ url: "http://wildfire.erwaysoftware.com/flags/userscript-new",
                  type: 'POST',
                  crossDomain: true,
                  'data': {
