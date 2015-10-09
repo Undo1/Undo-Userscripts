@@ -4,11 +4,11 @@
 // @author Undo
 // @description To delete stuff faster
 // @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
-// @include *://*stackoverflow.com/admin/users/*/post-comments
-// @include *://*superuser.com/admin/users/*/post-comments
-// @include *://*serverfault.com/admin/users/*/post-comments
-// @include *://*stackexchange.com/admin/users/*/post-comments
-// @include *://discuss.area51.com/admin/users/*/post-comments
+// @include *://*stackoverflow.com/admin/users/*/post-comments*
+// @include *://*superuser.com/admin/users/*/post-comments*
+// @include *://*serverfault.com/admin/users/*/post-comments*
+// @include *://*stackexchange.com/admin/users/*/post-comments*
+// @include *://discuss.area51.com/admin/users/*/post-comments*
 // ==/UserScript==
 
 function with_jquery(f) {
