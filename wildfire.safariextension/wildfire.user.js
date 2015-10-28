@@ -34,11 +34,22 @@ with_jquery(function($){
       {
         isShowingCheckboxes = true;
         $(this).html("<strong>confirm</strong>");
-        $('.comment').prepend("<input type='checkbox' class='autoflag_checkbox'>");
+        var post = $(this).closest(".answer, .question");
+        $('.comment').each( function() {
+          if ($(this).closest(".answer, .question").is(post))
+          {
+            $(this).prepend("<input type='checkbox' class='autoflag_checkbox' checked>");
+          }
+          else
+          {
+            $(this).prepend("<input type='checkbox' class='autoflag_checkbox'>");
+          }
+        });
       }
       else
       {
         $(this).html("<strong>working...</strong>");
+
         var checked = $('input:checked');
         console.log(checked.length);
         var flaggedcomments=$('.autoflag_checkbox:checked').map(function(){return $(this).parent().attr('id').replace(/comment-/g, "")}).toArray()
