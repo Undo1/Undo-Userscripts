@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Delete comments from comment history
-// @version 0.1
+// @version 0.2
 // @author Undo
 // @description To delete stuff faster
 // @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
@@ -21,24 +21,45 @@ function with_jquery(f) {
 
 with_jquery(function($){
 	$('document').ready(function(){
-		$('.meta-row .creation-date').append($('<span class="lsep">|</span><a class="delete-comment" href="javascript:void(0)" title="Delete comment">(delete)</a>'));
+		$('.meta-row .creation-date').each( function(){
+			if ($(this).closest('tr.meta-row').hasClass("deleted-row") == false){
+			$(this).append($('<span class="lsep">|</span><a class="delete-comment" href="javascript:void(0)" title="Delete comment">(delete)</a>'));
+		}else{
+			$(this).append($('<span class="lsep">|</span><a class="delete-comment" href="javascript:void(0)" title="Delete comment">(undelete)</a>'));
+		}
+		});
 		$('.delete-comment').bind("click",function(){
-      var deleteButton = $(this)
+      			var deleteButton = $(this);
 			var commentid=$(this).closest('tr.meta-row').data('id');
-      console.log(commentid)
+      			console.log(commentid);
+			var postid = $(this).closest('tr.meta-row').data('postid');
+      			console.log(postid);
 
-			$(this).html("<strong>(working...)</strong>");
-			$.post('/posts/comments/'+commentid+'/vote/10',
-				{'fkey':StackExchange.options.user.fkey, 'sendCommentBackInMessage':'true'},
-				function(data){
-					console.log(data);
-					if (data.Success == true)
-					{
-						deleteButton.html("<strong>deleted</strong>");
-            deleteButton.closest('tr.meta-row').addClass('deleted-row')
+			if ($(this).closest('tr.meta-row').hasClass("deleted-row") == true){
+				var url = "/admin/posts/" + postid + "/comments/" + commentid + "/undelete"
+				$(this).html("<strong>(working...)</strong>");
+				$.post(url,
+					{'fkey':StackExchange.options.user.fkey, 'sendCommentBackInMessage':'true'},
+					function(data){
+							deleteButton.html("(delete)");
+							deleteButton.closest('tr.meta-row').removeClass('deleted-row')
+						}
+				);
+			}else{
+				$(this).html("<strong>(working...)</strong>");
+				var url = '/posts/comments/'+commentid+'/vote/10'
+				$.post(url,
+					{'fkey':StackExchange.options.user.fkey, 'sendCommentBackInMessage':'true'},
+					function(data){
+						console.log(data);
+						if (data.Success == true)
+						{
+							deleteButton.html("(undelete)");
+							deleteButton.closest('tr.meta-row').addClass('deleted-row')
+						}
 					}
-				}
-			);
+				);
+			}
 		});
 		return false;
 	});
