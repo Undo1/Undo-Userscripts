@@ -22,7 +22,7 @@ function with_jquery(f) {
 with_jquery(function($){
 	$('document').ready(function(){
 		$('.meta-row .creation-date').each( function(){
-			if ($(this.closest('tr.meta-row').hasClass("deleted-row") == false){
+			if ($(this).closest('tr.meta-row').hasClass("deleted-row") == false){
 			$(this).append($('<span class="lsep">|</span><a class="delete-comment" href="javascript:void(0)" title="Delete comment">(delete)</a>'));
 		}else{
 			$(this).append($('<span class="lsep">|</span><a class="delete-comment" href="javascript:void(0)" title="Delete comment">(undelete)</a>'));
