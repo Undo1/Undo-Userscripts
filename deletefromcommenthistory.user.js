@@ -26,14 +26,14 @@ with_jquery(function($){
 			$(this).append($('<span class="lsep">|</span><a class="delete-comment" href="javascript:void(0)" title="Delete comment">(delete)</a>'));
 		}else{
 			$(this).append($('<span class="lsep">|</span><a class="delete-comment" href="javascript:void(0)" title="Delete comment">(undelete)</a>'));
-		}}
-		);
+		}
+		});
 		$('.delete-comment').bind("click",function(){
-      var deleteButton = $(this)
+      			var deleteButton = $(this);
 			var commentid=$(this).closest('tr.meta-row').data('id');
-      console.log(commentid)
+      			console.log(commentid);
 			var postid = $(this).closest('tr.meta-row').data('postid');
-      console.log(postid)
+      			console.log(postid);
 
 			if ($(this).closest('tr.meta-row').hasClass("deleted-row") == true){
 				var url = "/admin/posts/" + postid + "/comments/" + commentid + "/undelete"
@@ -46,6 +46,7 @@ with_jquery(function($){
 						}
 				);
 			}else{
+				$(this).html("<strong>(working...)</strong>");
 				var url = '/posts/comments/'+commentid+'/vote/10'
 				$.post(url,
 					{'fkey':StackExchange.options.user.fkey, 'sendCommentBackInMessage':'true'},
@@ -58,7 +59,6 @@ with_jquery(function($){
 						}
 					}
 				);
-				$(this).html("<strong>(working...)</strong>");
 			}
 		});
 		return false;
