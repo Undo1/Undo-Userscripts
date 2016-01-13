@@ -43,6 +43,11 @@ $('document').ready(function(){
 	{
 		$(this).html("<strong>working...</strong>");
 		var checked = $('input:checked');
+		if (checked.length == 0){
+			$(".autoflag_checkbox").remove();
+			$(this).html("autoflag");
+			return;
+		}
 		console.log(checked.length);
 		var flaggedcomments=$('.autoflag_checkbox:checked').map(function(){return $(this).parent().attr('id').replace(/comment-/g, "")}).toArray()
 		function flagnext(){
