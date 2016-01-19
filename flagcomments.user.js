@@ -9,6 +9,11 @@
 // @include http://*serverfault.com/*
 // @include http://*stackexchange.com/*
 // @include http://discuss.area51.com/*
+// @exclude http://*stackoverflow.com/*/revisions
+// @exclude http://*superuser.com/*/revisions
+// @exclude http://*serverfault.com/*/revisions
+// @exclude http://*stackexchange.com/*/revisions
+// @exclude http://discuss.area51.com/*/revisions
 // ==/UserScript==
 
 function with_jquery(f) {
