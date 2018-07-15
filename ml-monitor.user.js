@@ -4,7 +4,7 @@
 // @author Undo
 // @description Show ML results inline
 // @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html) 
-// @include http://*stackoverflow.com/*
+// @include http://*stackoverflow.com/questions*
 // ==/UserScript==
 
 function with_jquery(f) {
@@ -16,19 +16,18 @@ function with_jquery(f) {
 
 
 with_jquery(function($){
-	$('document').ready(function(){
-
-		var body = $(".post-text")[0].innerHTML
-    var title = $("#question-header .question-hyperlink")[0].innerHTML
-    $.get("https://tmpfiles.dvtk.me/", { "title": title, "body": body }, function(data) {
-      var probOfRecRequest = data["id"][data["class"].indexOf("Recommendation request")];
+    $('document').ready(function(){
+        var body = $(".post-text")[0].innerHTML
+        var title = $("#question-header .question-hyperlink")[0].innerHTML
+        $.get("https://ml.erwaysoftware.com/", { "title": title, "body": body }, function(data) {
+            var probOfRecRequest = data["id"][data["class"].indexOf("Recommendation request")];
       
-      if (probOfRecRequest > 0.5) {
-        $(".inner-content.clearfix").prepend('<span style="background-color: red; padding: 3px; color: white;">recommendation request (' + probOfRecRequest * 100 + '%)</span>')
-      } else {
-        $(".inner-content.clearfix").prepend('<span style="background-color: green; padding: 3px; color: white;">not-recommendation request (' + probOfRecRequest * 100 + '%)</span>')
-      }
-    });
+            if (probOfRecRequest > 0.5) {
+                $(".inner-content.clearfix").prepend('<span style="background-color: red; padding: 3px; color: white;">recommendation request (' + probOfRecRequest * 100 + '%)</span>')
+            } else {
+                $(".inner-content.clearfix").prepend('<span style="background-color: green; padding: 3px; color: white;">not-recommendation request (' + probOfRecRequest * 100 + '%)</span>')
+            }
+        });
 		
 		return false;
 	});
