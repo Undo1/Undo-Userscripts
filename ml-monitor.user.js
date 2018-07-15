@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name FriendlyMods
+// @name MLViewer
 // @version 01
 // @author Undo
 // @description Show ML results inline
-// @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html) 
-// @include http://*stackoverflow.com/questions*
+// @license MIT
+// @include *://stackoverflow.com/questions*
 // ==/UserScript==
 
 function with_jquery(f) {
@@ -28,7 +28,7 @@ with_jquery(function($){
                 $(".inner-content.clearfix").prepend('<span style="background-color: green; padding: 3px; color: white;">not-recommendation request (' + probOfRecRequest * 100 + '%)</span>')
             }
         });
-		
-		return false;
-	});
+	    return false;
+    });
 });
+
