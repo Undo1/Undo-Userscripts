@@ -18,14 +18,13 @@ function with_jquery(f) {
 with_jquery(function($){
     $('document').ready(function(){
         var body = $(".post-text")[0].innerHTML
-        var title = $("#question-header .question-hyperlink")[0].innerHTML
-        $.get("https://ml.erwaysoftware.com/", { "title": title, "body": body }, function(data) {
+        $.get("https://ml.erwaysoftware.com/", { "body": body }, function(data) {
             var probOfRecRequest = data["id"][data["class"].indexOf("Recommendation request")];
       
-            if (probOfRecRequest > 0.5) {
-                $(".inner-content.clearfix").prepend('<span style="background-color: red; padding: 3px; color: white;">recommendation request (' + probOfRecRequest * 100 + '%)</span>')
+            if (data["prediction"] == "Recommendation request") {
+                $(".inner-content.clearfix").prepend('<span style="background-color: red; padding: 3px; color: white;">ML: recommendation request</span>')
             } else {
-                $(".inner-content.clearfix").prepend('<span style="background-color: green; padding: 3px; color: white;">not-recommendation request (' + probOfRecRequest * 100 + '%)</span>')
+                $(".inner-content.clearfix").prepend('<span style="background-color: green; padding: 3px; color: white;">ML: not-recommendation request</span>')
             }
         });
 	    return false;
