@@ -19,7 +19,6 @@ with_jquery(function($){
     $('document').ready(function(){
         var body = $(".post-text")[0].innerHTML
         $.get("https://ml.erwaysoftware.com/", { "body": body }, function(data) {
-            var probOfRecRequest = data["id"][data["class"].indexOf("Recommendation request")];
       
             if (data["prediction"] == "Recommendation request") {
                 $(".inner-content.clearfix").prepend('<span style="background-color: red; padding: 3px; color: white;">ML: recommendation request</span>')
