@@ -18,12 +18,13 @@ function with_jquery(f) {
 with_jquery(function($){
     $('document').ready(function(){
         var body = $(".post-text")[0].innerHTML
+	$(".inner-content.clearfix").prepend('<span class="ml-loading" style="background-color: grey; padding: 3px; color: white;">ML: loading...</span>');
         $.get("https://ml.erwaysoftware.com/", { "body": body }, function(data) {
-      
+      	    $(".ml-loading").remove();
             if (data["prediction"] == "Recommendation request") {
-                $(".inner-content.clearfix").prepend('<span style="background-color: red; padding: 3px; color: white;">ML: recommendation request</span>')
+                $(".inner-content.clearfix").prepend('<span style="background-color: red; padding: 3px; color: white;">ML: recommendation request</span>');
             } else {
-                $(".inner-content.clearfix").prepend('<span style="background-color: green; padding: 3px; color: white;">ML: not-recommendation request</span>')
+                $(".inner-content.clearfix").prepend('<span style="background-color: green; padding: 3px; color: white;">ML: not-recommendation request</span>');
             }
         });
 	    return false;
