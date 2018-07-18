@@ -22,6 +22,6 @@ function with_jquery(f) {
 with_jquery(function($){
   $('document').ready(function(){
     // Some voodoo magic from someone. I have no idea what this does.
-    $(document).append("<style>.comment-up-off,.comment-flagging { display: none; } .comment:hover .comment-up-off, .comment:hover .comment-flagging { display: block; }</style>")
+    $("body").append("<style>.comment-up-off,.comment-flagging { display: none; } .comment:hover .comment-up-off, .comment:hover .comment-flagging { display: block; }</style>")
   });
 });
