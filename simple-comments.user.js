@@ -4,11 +4,18 @@
 // @author Undo
 // @description Hide upvote/flag icons except on mouseover
 // @license CC0
-// @include http://*stackoverflow.com/*
-// @include http://*superuser.com/*
-// @include http://*serverfault.com/*
-// @include http://*stackexchange.com/*
-// @include http://discuss.area51.com/*
+// @include       http*://stackoverflow.com/*
+// @include       http*://meta.stackoverflow.com/*
+// @include       http*://dev.stackoverflow.com/*
+// @include       http*://askubuntu.com/*
+// @include       http*://meta.askubuntu.com/*
+// @include       http*://superuser.com/*
+// @include       http*://meta.superuser.com/*
+// @include       http*://serverfault.com/*
+// @include       http*://meta.serverfault.com/*
+// @include       http*://mathoverflow.net/*
+// @include       http*://meta.mathoverflow.net/*
+// @include       http*://*.stackexchange.com/*
 // ==/UserScript==
 
 function with_jquery(f) {
