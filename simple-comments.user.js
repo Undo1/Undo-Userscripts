@@ -28,7 +28,12 @@ function with_jquery(f) {
 
 with_jquery(function($){
   $('document').ready(function(){
+    var pre_str = ".comments-list .comment.js-comment .js-comment-actions.comment-actions";
+    var pre_str_hover = ".comments-list .comment.js-comment:hover .js-comment-actions.comment-actions";
     // Some voodoo magic from someone. I have no idea what this does.
-    $("body").append("<style>.comment-up-off,.comment-flagging { display: none; } .comment:hover .comment-up-off, .comment:hover .comment-flagging { display: block; }</style>")
+    $("body").append("<style>" +
+                     pre_str+" .comment-up-off, "+pre_str+" .comment-flagging { visibility: hidden !important; }"+
+                     pre_str_hover+" .comment-up-off, "+pre_str_hover+" .comment-flagging { visibility: initial !important; }"+
+                     "</style>")
   });
 });
