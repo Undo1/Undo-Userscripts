@@ -32,8 +32,8 @@ with_jquery(function($){
     var pre_str_hover = ".comments-list .comment.js-comment:hover .js-comment-actions.comment-actions";
     // Some voodoo magic from someone. I have no idea what this does.
     $("body").append("<style>" +
-                     pre_str+" .comment-up-off, "+pre_str+" .comment-flagging { visibility: hidden !important; }"+
-                     pre_str_hover+" .comment-up-off, "+pre_str_hover+" .comment-flagging { visibility: initial !important; }"+
+                     pre_str+" .comment-up-off, "+pre_str+" .comment-flagging .comment-flag { visibility: hidden !important; }"+
+                     pre_str_hover+" .comment-up-off, "+pre_str_hover+" .comment-flagging .comment-flag { visibility: initial !important; }"+
                      "</style>")
   });
 });
