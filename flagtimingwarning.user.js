@@ -3,7 +3,7 @@
 // @version 0.1
 // @author Undo
 // @description Warns when the post has been edited after flags were cast
-// @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html) 
+// @license MIT
 // @include *://*stackoverflow.com/admin/dashboar*
 // @include *://*superuser.com/admin/dashboar*
 // @include *://*serverfault.com/admin/dashboar*
